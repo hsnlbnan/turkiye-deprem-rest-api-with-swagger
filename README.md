@@ -19,7 +19,7 @@ komutunu uygulayarak projeyi ayağa kaldırın.
 
 #### Api Örneği
 
-![Screenshot](swagger.png)
+![Screenshot](api.png)
 
 ## Kullanımı
 
