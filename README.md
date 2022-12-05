@@ -1,4 +1,4 @@
-# Deprem API
+# Türkiye Deprem API
 
 Türkiye'de en son meydana gelen 500 depremi listeler.
 
