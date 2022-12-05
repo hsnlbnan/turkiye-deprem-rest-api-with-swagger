@@ -1,0 +1,92 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Deprem API v1.0.0",
+    "description": "Hiçbir gelir elde etmeyen, ücretsiz olarak kullanıma sunulan bir API'dir. \n İletişime geçmek için [linkedIn](https://linkedin.com/in/husnu) üzerinden ulaşabilirsiniz. \n \n Kod üzerinde dilediğiniz gibi değişiklik yapabilirsiniz."
+  },
+
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api": {
+      "get": {
+        "tags": ["Tüm Depremler"],
+        "summary": "Türkiyede meydana gelen son 500 depremi listeler",
+
+      
+
+
+        "parameters": [
+            {
+            "in": "query",
+              "name": "city",
+              "description": "City",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/Earhquake"
+              }
+            },
+            {
+            "in": "depth",
+              "name": "depth",
+              "description": "Depth",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/Earhquake"
+              }
+            },
+            {
+            "in": "query",
+              "name": "intensity",
+              "description": "Intensity",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/Earhquake"
+              }
+            }
+          ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Earhquake"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Earhquake": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "integer"
+        },
+        "time": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "depth": {
+          "type": "number"
+        },
+        "intensity": {
+          "type": "number"
+        },
+        "region": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
