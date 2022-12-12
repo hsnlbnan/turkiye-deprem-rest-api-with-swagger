@@ -5,7 +5,7 @@ exports.index = function (req, res) {
   const city = req.query.city;
   const depth = req.query.depth;
 
-  var items = [];
+  const items = [];
   request(
     "http://www.koeri.boun.edu.tr/scripts/lst0.asp",
     (error, response, html) => {
@@ -16,20 +16,20 @@ exports.index = function (req, res) {
         result = result.splice(6, result.length + 1);
         result = result.splice(0, result.length - 2);
         result.forEach((element) => {
-          var dataString = element.split(" ");
-          var dataInfo = [];
+          const dataString = element.split(" ");
+          const dataInfo = [];
           for (var i = 0; i < dataString.length; i++) {
             if (dataString[i].length > 0) {
               dataInfo.push(dataString[i]);
             }
           }
-          var date = dataInfo[0];
-          var time = dataInfo[1];
-          var latitude = dataInfo[2];
-          var longitude = dataInfo[3];
-          var depth = dataInfo[4];
-          var intensity = dataInfo[6];
-          var region = dataInfo[8];
+          const date = dataInfo[0];
+          const time = dataInfo[1];
+          const latitude = dataInfo[2];
+          const longitude = dataInfo[3];
+          const depth = dataInfo[4];
+          const intensity = dataInfo[6];
+          let region = dataInfo[8];
           if (region !== null) {
             region = region
               .replace("-", " ")
@@ -38,7 +38,7 @@ exports.index = function (req, res) {
                 return letter.toUpperCase();
               });
           }
-          var city = dataInfo[9];
+          let city = dataInfo[9];
           if (city != null) {
             if (dataInfo[9].includes("(")) {
               city = dataInfo[9]
@@ -75,12 +75,8 @@ exports.index = function (req, res) {
         });
 
         const filteredCities = items.filter((item) => {
-          if (city && depth && intensity) {
-            return (
-              item.city.includes(city) &&
-              item.depth.includes(city) &&
-              item.intensity.includes(intensity)
-            );
+          if (city && depth) {
+            return item.city.includes(city) && item.depth.includes(depth);
           } else if (city) {
             return item.city.includes(city);
           } else if (depth) {

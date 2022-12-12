@@ -145,6 +145,7 @@
     "psl": "^1.9.0",
     "pstree.remy": "^1.1.8",
     "punycode": "^2.1.1",
+    "puppeteer": "^19.4.0",
     "qs": "^6.11.0",
     "range-parser": "^1.2.1",
     "raw-body": "^2.5.1",
